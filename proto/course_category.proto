@@ -1,0 +1,30 @@
+syntax = "proto3";
+package pb;
+option go_package = "infra/pb"; // Here is the location where the code will be generated
+
+message Blank{}
+
+message Category {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message CreateCategoryRequest{ 
+  string name = 1;
+  string description = 2;
+}
+
+message Id {
+  string id = 1;
+}
+
+message CategoryList {
+  repeated Category categories = 1;
+}
+
+service CategoryService {
+  rpc CreateCategory(stream CreateCategoryRequest) returns (stream Category) {}
+  rpc GetCategoryBy(Id) returns (Category) {}
+  rpc GetAllCategories(Blank) returns (CategoryList) {}
+}
