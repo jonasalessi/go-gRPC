@@ -21,12 +21,11 @@ func main() {
 	pb.RegisterCategoryServiceServer(server, categoryService.NewCategoryService(db))
 
 	listner, err := net.Listen("tcp", ":50051")
-	fmt.Println("Listing ", listner.Addr())
+	fmt.Println("Listening ", listner.Addr())
 	if err != nil {
 		panic(err)
 	}
 	if err := server.Serve(listner); err != nil {
 		panic(err)
 	}
-	fmt.Println("Stopping server")
 }
