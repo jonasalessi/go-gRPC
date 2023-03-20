@@ -3,9 +3,13 @@
 {
 	"name": "Go + gRPC",
 	"context": "..",
-	"dockerFile": "../DockerWorkstation",
-	"mounts": [
-		"source=go-grpc-ext,target=/root/.vscode-server/extensions,type=volume",
-		"source=go-grpc-ext-insiders,target=/root/.vscode-server-insiders/extensions,type=volume"
-	]
+	"dockerFile": "DockerWorkstation",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.go",
+				"zxh404.vscode-proto3"
+			]
+		}
+	}
 }
